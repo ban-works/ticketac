@@ -63,11 +63,14 @@ router.get("/booking", function (req, res, next) {
 });
 // GET results
 router.post("/results", async function (req, res, next) {
-  var departure = req.body.departure;
-  var arrival = req.body.arrival;
+  var departure = req.body.departure.toLowerCase();
+  departure = departure.charAt(0).toUpperCase() + departure.slice(1);
+  var arrival = req.body.arrival.toLowerCase();
+  arrival = arrival.charAt(0).toUpperCase() + arrival.slice(1);
   var date = req.body.date;
+  console.log(departure);
+  console.log(arrival)
   journeys = await JourneyModel.find({ departure: departure, arrival: arrival, date: date});
-  console.log(journeys)
   if(journeys.length<1){
     res.redirect('/notfound')
   }else{
