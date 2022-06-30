@@ -42,6 +42,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/booking', function(req, res, next) {
+  res.render('booking', { title: 'Express' });
+});
+
 
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {
@@ -93,7 +97,7 @@ router.get('/result', function(req, res, next) {
   }
 
 
-  res.render('index', { title: 'Express' });
+  res.render('index',);
 });
 
 module.exports = router;
