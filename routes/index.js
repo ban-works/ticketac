@@ -69,18 +69,18 @@ router.post("/results", async function (req, res, next) {
   journeys = await JourneyModel.find({ departure: departure, arrival: arrival, date: date});
   console.log(journeys)
   if(journeys.length<1){
-    res.redirect('/notfound')
+    res.redirect('/not-found')
   }else{
     res.render("results", {journeys});
 
   }
 });
 
-router.get("/notfound", function (req, res, next) {
-  res.render("notfound", );
+router.get("/not-found", function (req, res, next) {
+  res.render("not-found", );
 });
-router.get("/lasttrips", function (req, res, next) {
-  res.render("lasttrips", );
+router.get("/last-trips", function (req, res, next) {
+  res.render("last-trips", );
 });
 router.get("/my-tickets", function (req, res, next) {
   res.render("my-tickets",);
