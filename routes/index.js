@@ -1,25 +1,28 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // useNewUrlParser ;)
 var options = {
   connectTimeoutMS: 5000,
   useNewUrlParser: true,
-  useUnifiedTopology: true
- };
+  useUnifiedTopology: true,
+};
 
 // --------------------- BDD -----------------------------------------------------
-mongoose.connect('mongodb+srv://admin:OltDHFA1pzFdjFbN@cluster0.oqvza2f.mongodb.net/ticketac?retryWrites=true&w=majority',
-   options,
-   function(err) {
+mongoose.connect(
+  "mongodb+srv://admin:OltDHFA1pzFdjFbN@cluster0.oqvza2f.mongodb.net/ticketac?retryWrites=true&w=majority",
+  options,
+  function (err) {
     if (err) {
-      console.log(`error, failed to connect to the database because --> ${err}`);
+      console.log(
+        `error, failed to connect to the database because --> ${err}`
+      );
     } else {
-      console.info('*** Database Ticketac connection : Success ***');
+      console.info("*** Database Ticketac connection : Success ***");
     }
-   }
+  }
 );
 
 var journeySchema = mongoose.Schema({
@@ -30,77 +33,89 @@ var journeySchema = mongoose.Schema({
   price: Number,
 });
 
-var journeyModel = mongoose.model('journey', journeySchema);
+var journeyModel = mongoose.model("journey", journeySchema);
 
-var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
-var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
-
-
+var city = [
+  "Paris",
+  "Marseille",
+  "Nantes",
+  "Lyon",
+  "Rennes",
+  "Melun",
+  "Bordeaux",
+  "Lille",
+];
+var date = [
+  "2018-11-20",
+  "2018-11-21",
+  "2018-11-22",
+  "2018-11-23",
+  "2018-11-24",
+];
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Express" });
 });
 // GET booking
-router.get('/booking', function(req, res, next) {
-  res.render('booking', { title: 'Express' });
+router.get("/booking", function (req, res, next) {
+  res.render("booking", { title: "Express" });
 });
 // GET results
-router.get('/results', function(req, res, next) {
-  res.render('results', { title: 'Express' });
+router.get("/results", function (req, res, next) {
+  res.render("results", { title: "Express" });
+});
+
+router.get("/notfound", function (req, res, next) {
+  res.render("notfound", { title: "Express" });
+});
+router.get("/lasttrips", function (req, res, next) {
+  res.render("lasttrips", { title: "Express" });
 });
 
 // Remplissage de la base de donnée, une fois suffit
-router.get('/save', async function(req, res, next) {
-
+router.get("/save", async function (req, res, next) {
   // How many journeys we want
-  var count = 300
+  var count = 300;
 
   // Save  ---------------------------------------------------
-    for(var i = 0; i< count; i++){
+  for (var i = 0; i < count; i++) {
+    departureCity = city[Math.floor(Math.random() * Math.floor(city.length))];
+    arrivalCity = city[Math.floor(Math.random() * Math.floor(city.length))];
 
-    departureCity = city[Math.floor(Math.random() * Math.floor(city.length))]
-    arrivalCity = city[Math.floor(Math.random() * Math.floor(city.length))]
-
-    if(departureCity != arrivalCity){
-
-      var newUser = new journeyModel ({
-        departure: departureCity , 
-        arrival: arrivalCity, 
+    if (departureCity != arrivalCity) {
+      var newUser = new journeyModel({
+        departure: departureCity,
+        arrival: arrivalCity,
         date: date[Math.floor(Math.random() * Math.floor(date.length))],
-        departureTime:Math.floor(Math.random() * Math.floor(23)) + ":00",
+        departureTime: Math.floor(Math.random() * Math.floor(23)) + ":00",
         price: Math.floor(Math.random() * Math.floor(125)) + 25,
       });
-       
-       await newUser.save();
 
+      await newUser.save();
     }
-
   }
-  res.render('index', { title: 'Express' });
+  res.render("index", { title: "Express" });
 });
-
 
 // Cette route est juste une verification du Save.
 // Vous pouvez choisir de la garder ou la supprimer.
-router.get('/result', function(req, res, next) {
-
+router.get("/result", function (req, res, next) {
   // Permet de savoir combien de trajets il y a par ville en base
-  for(i=0; i<city.length; i++){
+  for (i = 0; i < city.length; i++) {
+    journeyModel.find(
+      { departure: city[i] }, //filtre
 
-    journeyModel.find( 
-      { departure: city[i] } , //filtre
-  
       function (err, journey) {
-
-          console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
+        console.log(
+          `Nombre de trajets au départ de ${journey[0].departure} : `,
+          journey.length
+        );
       }
-    )
-
+    );
   }
 
-
-  res.render('index',);
+  res.render("index");
 });
 
 module.exports = router;

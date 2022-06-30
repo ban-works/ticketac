@@ -3,3 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(#C0DBE7, #2D80B3);
 }
+
+tr {
+  line-height: 35px;
+  min-height: 35px;
+  height: 35px;
+}
