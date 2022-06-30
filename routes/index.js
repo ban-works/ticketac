@@ -72,6 +72,9 @@ router.get("/notfound", function (req, res, next) {
 router.get("/lasttrips", function (req, res, next) {
   res.render("lasttrips", { title: "Express" });
 });
+router.get("/my-tickets", function (req, res, next) {
+  res.render("my-tickets", { title: "Express" });
+});
 
 // Remplissage de la base de donnée, une fois suffit
 router.get("/save", async function (req, res, next) {
