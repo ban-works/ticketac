@@ -10,6 +10,14 @@ var models = require('./routes/index')
 var session = require('express-session');
 var app = express();
 
+app.use(
+  session({
+   secret: 'a4f8071d-c873-4447-8ve2',
+   resave: false,
+   saveUninitialized: false,
+  })
+  );
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
