@@ -49,6 +49,9 @@ router.get('/booking', function(req, res, next) {
 router.get('/notfound', function(req, res, next) {
   res.render('notfound', { title: 'Express' });
 });
+router.get('/lasttrips', function(req, res, next) {
+  res.render('lasttrips', { title: 'Express' });
+});
 
 
 // Remplissage de la base de donnée, une fois suffit
