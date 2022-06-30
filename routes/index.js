@@ -41,11 +41,14 @@ var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+// GET booking
 router.get('/booking', function(req, res, next) {
   res.render('booking', { title: 'Express' });
 });
-
+// GET results
+router.get('/results', function(req, res, next) {
+  res.render('results', { title: 'Express' });
+});
 
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {
