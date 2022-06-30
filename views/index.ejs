@@ -14,12 +14,12 @@
 
       <div class="col d-flex flex-column justify-content-start col-10 col-lg-3 m-1">
         <h2 class="text-center text-white"> Sign in :</h2>
-        <form>
+        <form action="/users/sign-in" method="POST">
           <div class="form-group m-3">
-            <input type="email" class="form-control" id="email-signin" placeholder="Email">
+            <input type="email" class="form-control" name="email" placeholder="Email">
           </div>
           <div class="form-group m-3">
-            <input type="password" class="form-control" id="password-signin" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password">
           </div>
           <div class="form-group m-3 d-flex justify-content-center">
             <button type="submit" class="btn btn-danger mb-2">Sign up</button>
@@ -29,18 +29,18 @@
 
       <div class="col d-flex flex-column justify-content-start col-10 col-lg-3 m-1">
         <h2 class="text-center text-white"> Sign up :</h2>
-        <form>
+        <form action="/users/sign-up" method="POST">
           <div class="form-group m-3">
-            <input type="text" class="form-control" id="name-signin" placeholder="Name">
+            <input type="text" class="form-control" name="lastname" placeholder="Name">
           </div>
           <div class="form-group m-3">
-            <input type="text" class="form-control" id="firstname-signin" placeholder="First Name">
+            <input type="text" class="form-control" name="firstname" placeholder="First Name">
           </div>
           <div class="form-group m-3">
-            <input type="email" class="form-control" id="email-signup" placeholder="Email">
+            <input type="email" class="form-control" name="email" placeholder="Email">
           </div>
           <div class="form-group m-3">
-            <input type="password" class="form-control" id="password-signup" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password">
           </div>
           <div class="form-group m-3 d-flex justify-content-center">
             <button type="submit" class="btn btn-danger mb-2">Sign in</button>
