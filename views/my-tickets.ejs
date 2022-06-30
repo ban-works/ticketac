@@ -44,13 +44,15 @@
             </thead>
             <tbody>
               <!-- TICKETS -->
+              <% for (i=0; i<tickets.length; i++){%>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <th scope="row"><%=i%></th>
+                <td><%=tickets[i].departure%>/<%=tickets[i].arrival%></td>
+                <td><%=tickets[i].date%></td>
+                <td><%=tickets[i].departureTime%></td>
+                <td><%=tickets[i].price%>€</td>
               </tr>
+              <%}%>
 
               <!-- TOTAL -->
               <tr class="table-danger">

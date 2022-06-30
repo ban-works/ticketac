@@ -68,14 +68,11 @@ router.post("/results", async function (req, res, next) {
   var arrival = req.body.arrival.toLowerCase();
   arrival = arrival.charAt(0).toUpperCase() + arrival.slice(1);
   var date = req.body.date;
-  console.log(departure);
-  console.log(arrival)
   journeys = await JourneyModel.find({ departure: departure, arrival: arrival, date: date});
   if(journeys.length<1){
     res.redirect('/not-found')
   }else{
     res.render("results", {journeys});
-
   }
 });
 
@@ -86,7 +83,35 @@ router.get("/last-trips", function (req, res, next) {
   res.render("last-trips", );
 });
 router.get("/my-tickets", function (req, res, next) {
-  res.render("my-tickets",);
+ 
+  if(!req.session.tickets){
+    req.session.tickets =[]
+    req.session.tickets.push(
+      {
+        departure : req.query.departure,
+        arrival : req.query.arrival,
+        date : req.query.date,
+        departureTime : req.query.time,
+        price :req.query.price,
+      }
+    )
+  }else{
+    req.session.tickets.push(
+      {
+        departure : req.query.departure,
+        arrival : req.query.arrival,
+        date : req.query.date,
+        departureTime : req.query.time,
+        price :req.query.price,
+      }
+    )
+  }
+  
+  var tickets = req.session.tickets
+  console.log(req.session)
+  
+  
+  res.render("my-tickets", {tickets});
 });
 
 // Remplissage de la base de donnée, une fois suffit
