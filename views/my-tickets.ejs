@@ -52,7 +52,7 @@
                 <td><%=tickets[i].departureTime%></td>
                 <td><%=tickets[i].price%>€</td>
               </tr>
-              <% total += Number(tickets[i].price); ticketsCount += Number(i)+1 }%>
+              <% total += Number(tickets[i].price); ticketsCount += Number(i) }%>
 
               <!-- TOTAL -->
               <tr class="table-danger">
@@ -69,7 +69,7 @@
 <!-- POPUP -->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Confirm
+  Continue
 </button>
 
 <!-- Modal -->
@@ -77,15 +77,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Trips Confirmed !</h5>
+        <h5 class="modal-title" id="exampleModalLabel">-Your order-</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Thanks You for your order !<br>
-          <%=ticketsCount%> trips have been confirmed for a total of <%=total%>€</p>
+        <p>Thanks you for your trust!<br>
+          You have <%=ticketsCount+1%> trip(s) to confirm for a total of <%=total%>€.</p>
       </div>
       <div class="modal-footer">
-        <a href='/users/confirm' type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</a>
+        <a href='/users/confirm' type="button" class="btn btn-danger" data-bs-dismiss="modal">Confirm</a>
       </div>
     </div>
   </div>

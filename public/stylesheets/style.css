@@ -1,5 +1,5 @@
 body {
-  height: 100%;
+  height: 100vh;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(#C0DBE7, #2D80B3);
 }
