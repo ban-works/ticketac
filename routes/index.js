@@ -110,6 +110,7 @@ router.get("/my-tickets", function (req, res, next) {
   }
   
   var tickets = req.session.tickets
+  console.log('payday',tickets);
   
   
   res.render("my-tickets", {tickets});
