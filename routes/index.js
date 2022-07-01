@@ -56,7 +56,8 @@ var date = [
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index");
+  var errorMsg = ""
+  res.render("index",{errorMsg});
 });
 // GET booking
 router.get("/booking", function (req, res, next) {
@@ -82,10 +83,17 @@ router.get("/not-found", function (req, res, next) {
 });
 
 router.get("/my-tickets", function (req, res, next) {
+  //check if user is logged in for front conditions
+  var userEmpty = true;
+  if(req.session.user != undefined){
+    userEmpty = false;
+  }
+  // check if the query is empty qn returns boolean
   var queryNotEmpty = true;
   if (req.query.departure == undefined){
     queryNotEmpty = false;
   }
+  // if query not empty and tickets in session  empty, create tickets and push
   if(!req.session.tickets && queryNotEmpty){
     req.session.tickets =[]
     req.session.tickets.push(
@@ -97,6 +105,7 @@ router.get("/my-tickets", function (req, res, next) {
         price :req.query.price,
       }
     )
+   // push only si tickets in session not empty
   }else if (queryNotEmpty){
     req.session.tickets.push(
       {
@@ -110,10 +119,9 @@ router.get("/my-tickets", function (req, res, next) {
   }
   
   var tickets = req.session.tickets
-  console.log('payday',tickets);
+    
   
-  
-  res.render("my-tickets", {tickets});
+  res.render("my-tickets", {tickets, userEmpty});
 });
 
 

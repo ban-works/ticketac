@@ -61,7 +61,7 @@ if(userFind){
 
 if(userFind!=null && req.body.password == userFind.password){ 
 
-  res.redirect('/booking' );
+  res.redirect('/my-tickets');
 } else {
   res.render('index');
 };
@@ -78,26 +78,38 @@ router.get("/confirm", async function (req, res, next) {
   if(req.session.user != undefined){
     userEmpty = false;
   }
-  console.log(ticketsEmpty);
-  console.log(userEmpty);
-  if (!ticketsEmpty && !userEmpty){
+  if(userEmpty){
+    var errorMsg = 'Please log in to continue.'
+    res.render("index",{errorMsg});
+  }else{
+    if (!ticketsEmpty){
       tickets = req.session.tickets
       var user = await UserModel.findOne({ email: req.session.user.email });
       for (i=0;i<req.session.tickets.length;i++){
           user.pastTrips.push(req.session.tickets[i])
       };
       await user.save();
+      req.session.tickets = null
+  }
+  res.redirect("/booking");
   }
   
-  res.redirect("/my-tickets");
+  
 });
 
 // GET Last trips based on user in DB
 router.get("/last-trips", async function (req, res, next) {
-  var user = await UserModel.findOne({ email: req.session.user.email});
-  console.log(user)
-  var lastTrips = user.pastTrips;
-  console.log(lastTrips)
-  res.render("last-trips",{lastTrips} );
+  
+  if(req.session.user == undefined){
+    var errorMsg = 'Please log in to continue.'
+    res.render("index",{errorMsg});
+  }else{
+    var user = await UserModel.findOne({ email: req.session.user.email});
+    console.log(user)
+    var lastTrips = user.pastTrips;
+    console.log(lastTrips)
+    res.render("last-trips",{lastTrips} );
+  }
+  
 });
 module.exports = router;

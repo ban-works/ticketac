@@ -44,7 +44,10 @@
             </thead>
             <tbody>
               <!-- TICKETS -->
-              <% var total = 0; ticketsCount = 0; for (i=0; i<tickets.length; i++){%>
+              <% var total = 0; ticketsCount = 0; 
+              
+              if(tickets != null){
+              for (i=0; i<tickets.length; i++){%>
               <tr>
                 <th scope="row"><%=i+1%></th>
                 <td><%=tickets[i].departure%>/<%=tickets[i].arrival%></td>
@@ -53,7 +56,7 @@
                 <td><%=tickets[i].price%>€</td>
               </tr>
               <% total += Number(tickets[i].price); ticketsCount++ 
-              }%>
+              }}%>
 
               <!-- TOTAL -->
               <tr class="table-danger">
