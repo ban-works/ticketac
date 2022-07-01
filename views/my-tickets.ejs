@@ -52,7 +52,8 @@
                 <td><%=tickets[i].departureTime%></td>
                 <td><%=tickets[i].price%>€</td>
               </tr>
-              <% total += Number(tickets[i].price); ticketsCount += Number(i) }%>
+              <% total += Number(tickets[i].price); ticketsCount++ 
+              }%>
 
               <!-- TOTAL -->
               <tr class="table-danger">
@@ -82,10 +83,10 @@
       </div>
       <div class="modal-body">
         <p>Thanks you for your trust!<br>
-          You have <%=ticketsCount+1%> trip(s) to confirm for a total of <%=total%>€.</p>
+          You have <%=ticketsCount%> trip(s) to confirm for a total of <%=total%>€.</p>
       </div>
       <div class="modal-footer">
-        <a href='/users/confirm' type="button" class="btn btn-danger" data-bs-dismiss="modal">Confirm</a>
+        <a href="/users/confirm" type="button" class="btn btn-danger">Confirm</a>
       </div>
     </div>
   </div>

@@ -78,6 +78,8 @@ router.get("/confirm", async function (req, res, next) {
   if(req.session.user != undefined){
     userEmpty = false;
   }
+  console.log(ticketsEmpty);
+  console.log(userEmpty);
   if (!ticketsEmpty && !userEmpty){
       tickets = req.session.tickets
       var user = await UserModel.findOne({ email: req.session.user.email });
