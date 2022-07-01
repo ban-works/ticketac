@@ -66,6 +66,8 @@
             <!-- BOUTON -->
             <div class="d-flex justify-content-end">
 
+
+<% if(userEmpty == false){%>
 <!-- POPUP CONFIRM LOGGED -->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -90,10 +92,9 @@
     </div>
   </div>
 </div>
-
-
-<!-- POPUP CONFIRM GET LOGGED -->
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#logModal" data-bs-whatever="@mdo">Continue</button>
+<%} else if (userEmpty == true){%>
+  <!-- POPUP CONFIRM GET LOGGED -->
+<button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#logModal" data-bs-whatever="@mdo">Continue</button>
 
 <div class="modal modal-xl fade" id="logModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -147,9 +148,10 @@
       </div>
     </div>
   </div>
+</div>
+  <%}%>
 
-              <!-- <button type="button" class="btn btn-danger btn-xs">Confirm</button> -->
-            </div>
+
         </div>
       </div>
     </div>

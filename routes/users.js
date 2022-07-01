@@ -40,8 +40,7 @@ console.log('inputs', newUser)
 
   console.log('sess', req.session.email)
 
-  //on redirige vers la page météo
-  res.redirect('/booking');
+  res.redirect('/my-tickets');
 } else {
   res.redirect('/')
 }
@@ -49,7 +48,7 @@ console.log('inputs', newUser)
 
 // SIGN-IN
 router.post('/sign-in', async function(req, res, next) {
-
+var errorMsg = '';
 var userFind = await UserModel.findOne({email:req.body.email});
 if(userFind){
   req.session.user = {
@@ -63,7 +62,7 @@ if(userFind!=null && req.body.password == userFind.password){
 
   res.redirect('/my-tickets');
 } else {
-  res.render('index');
+  res.render('index', {errorMsg});
 };
 });
 
