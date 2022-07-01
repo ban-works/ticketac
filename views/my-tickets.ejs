@@ -48,7 +48,7 @@
               <tr>
                 <th scope="row"><%=i+1%></th>
                 <td><%=tickets[i].departure%>/<%=tickets[i].arrival%></td>
-                <td><%=tickets[i].date%></td>
+                <td><%=dateFormat(tickets[i].date)%></td>
                 <td><%=tickets[i].departureTime%></td>
                 <td><%=tickets[i].price%>€</td>
               </tr>
@@ -85,7 +85,7 @@
           You have <%=ticketsCount+1%> trip(s) to confirm for a total of <%=total%>€.</p>
       </div>
       <div class="modal-footer">
-        <a href='/users/confirm' type="button" class="btn btn-danger" data-bs-dismiss="modal">Confirm</a>
+        <a href='/users/confirm' type="button" class="btn btn-danger">Confirm</a>
       </div>
     </div>
   </div>

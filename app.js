@@ -10,6 +10,12 @@ var models = require('./routes/index')
 var session = require('express-session');
 var app = express();
 
+app.locals.dateFormat = function (date){
+  date = new Date(date); 
+
+  return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
+};
+
 app.use(
   session({
    secret: 'a4f8071d-c873-4447-8ve2',
