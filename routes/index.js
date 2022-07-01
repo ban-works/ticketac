@@ -54,6 +54,12 @@ var date = [
   "2018-11-24",
 ];
 
+// get login page
+router.get("/login", function (req, res, next) {
+  var errorMsg = ""
+  res.render("index",{errorMsg});
+});
+
 /* GET home page. */
 router.get("/", function (req, res, next) {
   var errorMsg = ""
