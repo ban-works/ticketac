@@ -41,12 +41,14 @@
               </tr>
             </thead>
             <tbody>
+              <%for (i=0; i<lastTrips.length;i++){%>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row"><%=i+1%></th>
+                <td><%=lastTrips[i].departure%>/<%=lastTrips[i].arrival%></td>
+                <td><%=lastTrips[i].departureTime%></td>
+                <td><%=lastTrips[i].price%></td>
               </tr>
+              <%}%>
             
           </table>
                       <!-- BOUTON -->

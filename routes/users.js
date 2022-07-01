@@ -1,4 +1,5 @@
 var express = require('express');
+const { updateOne } = require('../models/journey');
 var router = express.Router();
 var UserModel = require('../models/users');
 
@@ -52,7 +53,7 @@ router.post('/sign-in', async function(req, res, next) {
 var userFind = await UserModel.findOne({email:req.body.email});
 if(userFind){
   req.session.user = {
-    username : userFind.userName,
+    email : userFind.email,
     id : userFind._id
   }
 
@@ -66,4 +67,35 @@ if(userFind!=null && req.body.password == userFind.password){
 };
 });
 
+
+// GET Confirm order - push session tickets into DB
+router.get("/confirm", async function (req, res, next) {
+  var ticketsEmpty = true;
+  if(req.session.tickets != undefined){
+    ticketsEmpty = false;
+  }
+  var userEmpty = true;
+  if(req.session.user != undefined){
+    userEmpty = false;
+  }
+  if (!ticketsEmpty && !userEmpty){
+      tickets = req.session.tickets
+      var user = await UserModel.findOne({ email: req.session.user.email });
+      for (i=0;i<req.session.tickets.length;i++){
+          user.pastTrips.push(req.session.tickets[i])
+      };
+      await user.save();
+  }
+  
+  res.redirect("/my-tickets");
+});
+
+// GET Last trips based on user in DB
+router.get("/last-trips", async function (req, res, next) {
+  var user = await UserModel.findOne({ email: req.session.user.email});
+  console.log(user)
+  var lastTrips = user.pastTrips;
+  console.log(lastTrips)
+  res.render("last-trips",{lastTrips} );
+});
 module.exports = router;

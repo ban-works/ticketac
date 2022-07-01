@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var JourneyModel = require('../models/journey.js');
 const mongoose = require("mongoose");
+const { request } = require("express");
 
 // useNewUrlParser ;)
 var options = {
@@ -79,12 +80,13 @@ router.post("/results", async function (req, res, next) {
 router.get("/not-found", function (req, res, next) {
   res.render("not-found", );
 });
-router.get("/last-trips", function (req, res, next) {
-  res.render("last-trips", );
-});
+
 router.get("/my-tickets", function (req, res, next) {
- 
-  if(!req.session.tickets){
+  var queryNotEmpty = true;
+  if (req.query.departure == undefined){
+    queryNotEmpty = false;
+  }
+  if(!req.session.tickets && queryNotEmpty){
     req.session.tickets =[]
     req.session.tickets.push(
       {
@@ -95,7 +97,7 @@ router.get("/my-tickets", function (req, res, next) {
         price :req.query.price,
       }
     )
-  }else{
+  }else if (queryNotEmpty){
     req.session.tickets.push(
       {
         departure : req.query.departure,
@@ -108,11 +110,12 @@ router.get("/my-tickets", function (req, res, next) {
   }
   
   var tickets = req.session.tickets
-  console.log(req.session)
   
   
   res.render("my-tickets", {tickets});
 });
+
+
 
 // Remplissage de la base de donnée, une fois suffit
 router.get("/save", async function (req, res, next) {
