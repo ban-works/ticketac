@@ -57,7 +57,7 @@ var date = [
 /* GET home page. */
 router.get("/", function (req, res, next) {
   var errorMsg = ""
-  res.render("index",{errorMsg});
+  res.render("booking",{errorMsg});
 });
 // GET booking
 router.get("/booking", function (req, res, next) {
