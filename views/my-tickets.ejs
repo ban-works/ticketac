@@ -44,10 +44,7 @@
             </thead>
             <tbody>
               <!-- TICKETS -->
-              <% var total = 0; ticketsCount = 0; 
-              
-              if(tickets != null){
-              for (i=0; i<tickets.length; i++){%>
+              <% var total = 0; ticketsCount = 0; for (i=0; i<tickets.length; i++){%>
               <tr>
                 <th scope="row"><%=i+1%></th>
                 <td><%=tickets[i].departure%>/<%=tickets[i].arrival%></td>
@@ -55,8 +52,7 @@
                 <td><%=tickets[i].departureTime%></td>
                 <td><%=tickets[i].price%>€</td>
               </tr>
-              <% total += Number(tickets[i].price); ticketsCount++ 
-              }}%>
+              <% total += Number(tickets[i].price); ticketsCount += Number(i) }%>
 
               <!-- TOTAL -->
               <tr class="table-danger">
@@ -70,7 +66,9 @@
             <!-- BOUTON -->
             <div class="d-flex justify-content-end">
 
-<!-- POPUP -->
+
+<% if(userEmpty == false){%>
+<!-- POPUP CONFIRM LOGGED -->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Continue
@@ -86,7 +84,7 @@
       </div>
       <div class="modal-body">
         <p>Thanks you for your trust!<br>
-          You have <%=ticketsCount%> trip(s) to confirm for a total of <%=total%>€.</p>
+          You have <%=ticketsCount+1%> trip(s) to confirm for a total of <%=total%>€.</p>
       </div>
       <div class="modal-footer">
         <a href='/users/confirm' type="button" class="btn btn-danger">Confirm</a>
@@ -94,11 +92,66 @@
     </div>
   </div>
 </div>
+<%} else if (userEmpty == true){%>
+  <!-- POPUP CONFIRM GET LOGGED -->
+<button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#logModal" data-bs-whatever="@mdo">Continue</button>
 
-<!-- fin div bouton -->
+<div class="modal modal-xl fade" id="logModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">YOU NEED TO LOG-IN OR SIGN UP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class=" row justify-content-center">
+
+          <div class="col d-flex flex-column justify-content-start col-12 col-lg-5 m-1">
+            <h2 class="text-start text-danger"> Sign-in :</h2>
+            <form action="/users/sign-in" method="POST">
+              <div class="form-group m-3">
+                <input type="email" class="form-control" name="email" placeholder="Email">
+              </div>
+              <div class="form-group m-3">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+              <div class="form-group m-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger mb-2">Sign-in</button>
+              </div>
+            </form>
+          </div>
+    
+          <div class="col d-flex flex-column justify-content-start col-12 col-lg-5 m-1">
+            <h2 class="text-start text-danger pl-2"> Sign-up :</h2>
+            <form action="/users/sign-up" method="POST">
+              <div class="form-group m-3">
+                <input type="text" class="form-control" name="lastname" placeholder="Name">
+              </div>
+              <div class="form-group m-3">
+                <input type="text" class="form-control" name="firstname" placeholder="First Name">
+              </div>
+              <div class="form-group m-3">
+                <input type="email" class="form-control" name="email" placeholder="Email">
+              </div>
+              <div class="form-group m-3">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+              <div class="form-group m-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger mb-2">Sign-up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
 </div>
-              <!-- <button type="button" class="btn btn-danger btn-xs">Confirm</button> -->
-            </div>
+  <%}%>
+
+
         </div>
       </div>
     </div>
