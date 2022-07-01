@@ -1,5 +1,5 @@
 var express = require('express');
-const { updateOne } = require('../models/journey');
+var JourneyModel = require('../models/journey');
 var router = express.Router();
 var UserModel = require('../models/users');
 
