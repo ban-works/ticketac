@@ -59,6 +59,13 @@ router.get("/login", function (req, res, next) {
   var errorMsg = ""
   res.render("index",{errorMsg});
 });
+// get login page for LOGOUT
+router.get("/logout", function (req, res, next) {
+  var errorMsg = "You are logged out"
+  req.session.user = null
+  console.log(req.session.user)
+  res.render("index",{errorMsg});
+});
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
