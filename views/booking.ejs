@@ -50,9 +50,23 @@
                 <button type="submit" class="btn btn-danger mb-2">Go</button>
               </div>
             </div>
+            <div class="row justify-content-center mt-5">
+            <%if(success){%>
+                <div class="card d-flex flex-column justify-content-between align-items-center p-3 mb-2 col-3 ">
+                  <h4 class="text-center text-danger">Thanks for your order !</h4>
+                  <p>You can check your order in My Last Trips
+                    <br>Or you can book another trip :)
+                  </p>
+                  <a class="m-2" href="/users/last-trips">
+                    <button type="button" class="btn btn-danger">My Last Trips</button></a>
+                </div>
+              <%}%>
+            </div>
+
             <div class="row col-12 d-flex flex-row justify-content-center">
+              
               <div class="row col-6 col-md-4 mt-5">
-                <img src="./images/landmark.png" />
+                <img src="../images/landmark.png" />
               </div>
           
             </form>

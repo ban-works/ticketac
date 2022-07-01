@@ -69,12 +69,13 @@ router.get("/logout", function (req, res, next) {
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  var errorMsg = ""
-  res.render("booking",{errorMsg});
+  var success = false
+  res.render("booking",{success});
 });
 // GET booking
 router.get("/booking", function (req, res, next) {
-  res.render("booking");
+  var success = false
+  res.render("booking",{success});
 });
 // GET results
 router.post("/results", async function (req, res, next) {
@@ -96,12 +97,13 @@ router.get("/not-found", function (req, res, next) {
 });
 
 router.get("/my-tickets", function (req, res, next) {
+  
   //check if user is logged in for front conditions
   var userEmpty = true;
   if(req.session.user != undefined){
     userEmpty = false;
   }
-  // check if the query is empty qn returns boolean
+  // check if the query is empty and returns boolean
   var queryNotEmpty = true;
   if (req.query.departure == undefined){
     queryNotEmpty = false;
@@ -134,7 +136,7 @@ router.get("/my-tickets", function (req, res, next) {
   var tickets = req.session.tickets
     
   
-  res.render("my-tickets", {tickets, userEmpty});
+  res.render("my-tickets", {tickets, userEmpty, success: false});
 });
 
 

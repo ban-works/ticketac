@@ -48,22 +48,43 @@ console.log('inputs', newUser)
 
 // SIGN-IN
 router.post('/sign-in', async function(req, res, next) {
-var errorMsg = '';
+// je cherche l'email dans la bdd
 var userFind = await UserModel.findOne({email:req.body.email});
-if(userFind){
-  req.session.user = {
-    email : userFind.email,
-    id : userFind._id
+// je definis l'errormsg vide + les bollens a false
+var errorMsg = '';
+var isPasswordRight = false;
+var isEmailRight = false;
+// si ma bdd me renvoie un user
+if(userFind != null){
+// je passe l'email a true
+  if (userFind.email == req.body.email){
+    isEmailRight = true
   }
-
-}
-
-if(userFind!=null && req.body.password == userFind.password){ 
-
-  res.redirect('/my-tickets');
-} else {
-  res.render('index', {errorMsg});
-};
+// si le password est OK je passe passzord a true
+  if(userFind.password == req.body.password){
+      isPasswordRight = true;
+    }
+  }
+  // si l'email est inconnu en bdd
+  if (!isEmailRight){
+    // Affiche un message user does not exist
+    errorMsg = 'Your email is invalid. Please signup !';
+    res.render('index',{errorMsg});
+  }
+  // si l'email est connu en bdd mais le password est faux
+  if (!isPasswordRight && isEmailRight){
+    //Affiche un mesage password not ok
+    errorMsg = 'Your password is incorrect, please try again!';
+    res.render('index',{errorMsg});
+  }
+// si password et email sont true, alors je redirige vers my-tickets
+  if (isPasswordRight && isEmailRight){
+    req.session.user = {
+      email : userFind.email,
+      id : userFind._id
+    }
+    res.redirect('/my-tickets');
+  }
 });
 
 
@@ -90,7 +111,8 @@ router.get("/confirm", async function (req, res, next) {
       await user.save();
       req.session.tickets = null
   }
-  res.redirect("/booking");
+  success=true
+  res.render("booking",{success});
   }
   
   
