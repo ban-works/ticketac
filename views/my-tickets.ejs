@@ -66,6 +66,7 @@
             <!-- BOUTON -->
             <div class="d-flex justify-content-end">
 
+              <a href='/booking' type="button" class="btn btn-danger me-3 mb-3" >Back to Search</a>
 
 <% if(userEmpty == false){%>
 <!-- POPUP CONFIRM LOGGED -->
@@ -92,8 +93,9 @@
     </div>
   </div>
 </div>
+
 <%} else if (userEmpty == true){%>
-  <!-- POPUP CONFIRM GET LOGGED -->
+  <!-- POPUP CONFIRM GET LOGGED --> 
 <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#logModal" data-bs-whatever="@mdo">Continue</button>
 
 <div class="modal modal-xl fade" id="logModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
