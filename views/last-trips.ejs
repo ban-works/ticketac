@@ -21,13 +21,16 @@
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
+
+      <!-- HEADER -->
+      <%- include('header');%>
+
   <body>
-    <!-- HEADER -->
-    <%- include('header');%>
+
 
 
         <!-- CAROUSEL -->
-        <div class="col-xl-12rounded">
+        <div class="col-xl-12 rounded">
           <div id="titleCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
               <div class="carousel-inner">
                   <div class="carousel-item active" id="c-one"></div>
@@ -88,7 +91,7 @@
                 
               </table>
                           <!-- BOUTON -->
-                          <div class="d-flex justify-content-end mb-3">
+                          <div class="d-flex justify-content-end">
                             <a href='/booking' type="button" class="btn btn-danger btn-xs">Home</button>
                             </a>
             </div>
