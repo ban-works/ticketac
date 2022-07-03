@@ -29,10 +29,15 @@
 
           </div>
       </div>
+
+
+      <!-- CONTENT -->
       <div class="container d-flex justify-content-center col-8 mt-5">
         <div class="row d-flex flex-row bg-white shadow p-3 rounded">
+          <!-- FORM -->
           <form action ='/results' method='POST' class="row-fluid">
-            <h2 class="text-danger mb-1 title">One way ticket :</h2>
+            <h2 class="text-danger mb-3 title">One way ticket :</h2>
+            <!-- INPUT DIV -->
             <div class='d-flex justify-content-center mb-3'>
               <div class="me-2">
                   <input
@@ -47,7 +52,6 @@
                   <input
                     type="text"
                     name ="arrival"
-  
                     class="form-control"
                     placeholder="To: Lilles, Nantes ..."
                     aria-label="Last name"
@@ -62,26 +66,30 @@
                     aria-label="Last name"
                   />
                 </div>
+                <!-- SUBMIT BUTTON -->
                 <div>
                   <button type="submit" class="btn btn-danger me-0">Go</button>
                 </div>
                 </div>
               </div>
-              <div class="row justify-content-center mt-5">
-              <%if(success){%>
-                  <div class="card d-flex flex-column justify-content-between align-items-center p-3 mb-2 col-3 ">
-                    <h4 class="text-center text-danger">Thanks for your order !</h4>
-                    <p>You can check your order in My Last Trips
-                      <br>Or you can book another trip :)
-                    </p>
-                    <a class="m-2" href="/users/last-trips">
-                      <button type="button" class="btn btn-danger">My Last Trips</button></a>
-                  </div>
-                <%}%>
-              </div>
+
             
               </form>
         </div>
+
+              <!-- SUCCESS POPUP -->
+              <div class="row justify-content-center mt-5">
+                <%if(success){%>
+                    <div class="card d-flex flex-column align-items-center p-3 mb-2 col-3 ">
+                      <h4 class="text-center text-danger">Thanks for your order !</h4>
+                      <p>You can check your order in My Last Trips
+                        <br>Or you can book another trip :)
+                      </p>
+                      <a class="m-2" href="/users/last-trips">
+                        <button type="button" class="btn btn-danger">My Last Trips</button></a>
+                    </div>
+                  <%}%>
+                </div>
   </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

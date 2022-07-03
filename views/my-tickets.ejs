@@ -25,13 +25,33 @@
     <!-- HEADER -->
     <%- include('header');%>
 
+
+
+    <!-- CAROUSEL -->
+    <div class="col-xl-12rounded">
+      <div id="titleCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active" id="c-one"></div>
+              <div class="carousel-item" id="c-two"></div>
+              <div class="carousel-item" id="c-three"></div>
+              <div class="carousel-item" id="c-four"></div>
+              <div class="carousel-item" id="c-five"></div>
+              <div class="carousel-item" id="c-six"></div>
+
+          </div>
+      </div>
+
+
+      <!-- CONTENT -->
+
+    <!-- debut -->
     <div class="container-fluid">
     
       <div class="row col-10 col offset-1 mt-5">
 
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column bg-light shadow rounded p-3">
 
-          <h2 class="text-center text-white mb-3">Tickets in your basket :</h2>
+          <h2 class="text-start text-danger title mb-3">Tickets in your basket :</h2>
           <table class="table table-light table-borderless">
             <thead>
               <tr>
@@ -161,7 +181,10 @@
         </div>
       </div>
     </div>
+// fin
+</div>
 
+  </div>
     <!-- SCRIPTS -->
     <script src="../javascripts/confirmation-popup"></script>
     <script

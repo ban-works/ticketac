@@ -25,16 +25,36 @@
     <!-- HEADER -->
     <%- include('header');%>
 
-    <div class="container-fluid">
-    
-    <!-- NOT FOUND -->
-      <div class="row col-6 offset-3 mt-5">
-        <div class="d-flex flex-column align-items-center">
-          <h2 class="text-center text-white">Oops ! No trains available...</h2>
-          <a href='/booking' type="button" class="btn btn-danger m-3">Home</a>
-        </div>
+
+    <!-- CAROUSEL -->
+    <div class="col-xl-12rounded">
+      <div id="titleCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active" id="c-one"></div>
+              <div class="carousel-item" id="c-two"></div>
+              <div class="carousel-item" id="c-three"></div>
+              <div class="carousel-item" id="c-four"></div>
+              <div class="carousel-item" id="c-five"></div>
+              <div class="carousel-item" id="c-six"></div>
+
+          </div>
       </div>
-    </div>
+
+
+      <!-- CONTENT -->
+      <div class="container-fluid">
+    
+        <!-- NOT FOUND -->
+          <div class="row col-6 offset-3 mt-5">
+            <div class="d-flex flex-column align-items-center">
+              <h2 class="text-center title text-danger">Oops. No trains available...</h2>
+              <a href='/booking' type="button" class="btn btn-danger m-3 shadow">Home</a>
+            </div>
+          </div>
+        </div>
+    
+
+  </div>
 
     <!-- SCRIPTS -->
     <script
