@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Ticketac RailRoad Corporation</title>
+    <script src="https://kit.fontawesome.com/3ed291fefe.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <%- include('header');%>
     <div class="container-fluid">
       <div class=" row justify-content-center mt-5">
-        <h4 class="text-center text-danger"><%=errorMsg%></h4>
-
+        <%if(errorMsg){%>
+          <div class="card d-flex flex-column justify-content-between align-items-center p-3 mb-2 col-3 ">
+            <h6 class="text-center text-danger"><i class="fa-solid fa-circle-exclamation"></i></br>
+            </br>
+              <%=errorMsg%></h6>
+          </div>
+        <%}%>
+        </div>
+        <div class=" row justify-content-center mt-5">
       <div class="col d-flex flex-column justify-content-start col-10 col-lg-3 m-1">
         <h2 class="text-center text-white"> Sign in :</h2>
         <form action="/users/sign-in" method="POST">
