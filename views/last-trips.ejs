@@ -25,42 +25,81 @@
     <!-- HEADER -->
     <%- include('header');%>
 
-    <div class="container-fluid">
-    
-    <!--  -->
-      <div class="row col-10 col offset-1 mt-5">
-        <div class="d-flex flex-column">
 
-          <h2 class="text-center text-white mb-3">My last trips :</h2>
-          <table class="table table-light table-borderless">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Journey</th>
-                <th scope="col">Date</th>
-                <th scope="col">Departure time</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%for (i=0; i<lastTrips.length;i++){%>
-              <tr>
-                <th scope="row"><%=i+1%></th>
-                <td><%=lastTrips[i].departure%>/<%=lastTrips[i].arrival%></td>
-                <td><%=dateFormat(lastTrips[i].date)%></td>
-                <td><%=lastTrips[i].departureTime%></td>
-                <td><%=lastTrips[i].price%></td>
-              </tr>
-              <%}%>
-            
-          </table>
-                      <!-- BOUTON -->
-                      <div class="d-flex justify-content-end mb-3">
-                        <a href='/booking' type="button" class="btn btn-danger btn-xs">Home</button>
-                        </a>
-        </div>
+        <!-- CAROUSEL -->
+        <div class="col-xl-12rounded">
+          <div id="titleCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  <div class="carousel-item active" id="c-one"></div>
+                  <div class="carousel-item" id="c-two"></div>
+                  <div class="carousel-item" id="c-three"></div>
+                  <div class="carousel-item" id="c-four"></div>
+                  <div class="carousel-item" id="c-five"></div>
+                  <div class="carousel-item" id="c-six"></div>
+    
+              </div>
+          </div>
+    
+    
+          <!-- CONTENT -->
+              <!-- CAROUSEL -->
+    <div class="col-xl-12rounded">
+      <div id="titleCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active" id="c-one"></div>
+              <div class="carousel-item" id="c-two"></div>
+              <div class="carousel-item" id="c-three"></div>
+              <div class="carousel-item" id="c-four"></div>
+              <div class="carousel-item" id="c-five"></div>
+              <div class="carousel-item" id="c-six"></div>
+
+          </div>
       </div>
-    </div>
+
+
+      <!-- CONTENT -->
+      <div class="container-fluid">
+    
+        <!--  -->
+          <div class="row col-10 col offset-1 mt-5">
+            <div class="d-flex bg-light shadow rounded p-3 flex-column">
+    
+              <h2 class="text-danger title mb-3">My last trips :</h2>
+              <table class="table table-light table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Journey</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Departure time</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%for (i=0; i<lastTrips.length;i++){%>
+                  <tr>
+                    <th scope="row"><%=i+1%></th>
+                    <td><%=lastTrips[i].departure%>/<%=lastTrips[i].arrival%></td>
+                    <td><%=dateFormat(lastTrips[i].date)%></td>
+                    <td><%=lastTrips[i].departureTime%></td>
+                    <td><%=lastTrips[i].price%></td>
+                  </tr>
+                  <%}%>
+                
+              </table>
+                          <!-- BOUTON -->
+                          <div class="d-flex justify-content-end mb-3">
+                            <a href='/booking' type="button" class="btn btn-danger btn-xs">Home</button>
+                            </a>
+            </div>
+          </div>
+        </div>
+        </div>
+
+  </div>
+
+    
+      </div>
 
     <!-- SCRIPTS -->
     <script
