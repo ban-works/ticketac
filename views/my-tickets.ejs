@@ -27,10 +27,9 @@
 
     <div class="container-fluid">
     
-    <!--  -->
       <div class="row col-10 col offset-1 mt-5">
 
-        <div class="d-flex flex-column mt">
+        <div class="d-flex flex-column">
 
           <h2 class="text-center text-white mb-3">Tickets in your basket :</h2>
           <table class="table table-light table-borderless">
@@ -67,7 +66,7 @@
                 <td><%=total%>€</td>
               </tr>
           </table>
-            <!-- BOUTON -->
+             <!-- BOUTON -->
             <div class="d-flex justify-content-end">
 
               <a href='/booking' type="button" class="btn btn-danger me-3 mb-3" >Back to Search</a>
@@ -80,16 +79,17 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">-Your order-</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         <p>Thanks you for your trust!<br>
-          You have <%=ticketsCount+1%> trip(s) to confirm for a total of <%=total%>€.</p>
+          You have <span class='text-danger fw-bold'><%=ticketsCount+1%></span> trip(s) to confirm for a total of <span class='text-danger fw-bold'><%=total%></span>€.</p>
+          <img src="../images/confirmgif.gif" class="img-fluid">
       </div>
       <div class="modal-footer">
         <a href='/users/confirm' type="button" class="btn btn-danger">Confirm</a>
