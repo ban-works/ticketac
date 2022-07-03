@@ -9,3 +9,15 @@ tr {
   min-height: 35px;
   height: 35px;
 }
+
+.logo {
+  color : #dc3545;
+  font: 28px 'Logo';
+}
+
+/* POLICE LOGO */
+
+@font-face {
+  font-family: "Logo";
+  src: url('/fonts/Fontspring-DEMO-armingrotesk-ultrabold.otf');
+  }
