@@ -35,29 +35,29 @@
       <div class="container d-flex justify-content-center col-8 mt-5">
         <div class="row d-flex flex-row bg-white shadow p-3 rounded">
           <!-- FORM -->
-          <form action ='/results' method='POST' class="row-fluid">
-            <h2 class="text-danger mb-3 title">One way ticket :</h2>
+          <form action ='/results' method='POST' class="row-fluid col-12">
+            <h2 class="text-danger mb-3 title col-12">One way ticket :</h2>
             <!-- INPUT DIV -->
-            <div class='d-flex justify-content-center mb-3'>
-              <div class="me-2">
+            <div class='d-flex flex-wrap justify-content-between align-items-center mb-3'>
+              <div class="p-1 m-0 col-12 col-md-6 col-lg-3" >
                   <input
                     type="text"
                     name ="departure"
                     class="form-control"
                     placeholder="From: Paris, Marseile..."
-                    aria-label="First name"
+                    aria-label="departure"
                   />
                 </div>
-                <div class="me-2">
+                <div class="p-1 m-0 col-12 col-md-6 col-lg-3">
                   <input
                     type="text"
                     name ="arrival"
                     class="form-control"
                     placeholder="To: Lilles, Nantes ..."
-                    aria-label="Last name"
+                    aria-label="destination"
                   />
                 </div>
-                <div class="me-2">
+                <div class="p-1 col-10 col-sm-10 col-md-10 col-lg-3 ">
                   <input
                     type="date"
                     name="date"
@@ -67,9 +67,7 @@
                   />
                 </div>
                 <!-- SUBMIT BUTTON -->
-                <div>
-                  <button type="submit" class="btn btn-danger me-0">Go</button>
-                </div>
+                  <button type="submit" class="btn btn-danger col-2 m-auto p-1">Go</button>
                 </div>
               </div>
 
@@ -80,8 +78,8 @@
               <!-- SUCCESS POPUP -->
               <div class="row justify-content-center mt-5">
                 <%if(success){%>
-                    <div class="card d-flex flex-column align-items-center p-3 mb-2 col-3 ">
-                      <h4 class="text-center text-danger">Thanks for your order !</h4>
+                    <div class="card d-flex flex-column text-center align-items-center p-3 mb-2 col-8 col-md-6 col-lg-4 ">
+                      <h4 class="text-danger">Thanks for your order !</h4>
                       <p>You can check your order in My Last Trips
                         <br>Or you can book another trip :)
                       </p>

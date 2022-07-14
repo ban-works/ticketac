@@ -12,7 +12,7 @@
   <body>
     <%- include('header');%>
 
-    <div class="col-xl-12rounded">
+    <div class="col-xl-12">
       <div id="titleCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
               <div class="carousel-item active" id="c-one"></div>
@@ -30,15 +30,15 @@
           <div class="container-fluid">
         <div class=" row justify-content-center">
           <%if(errorMsg){%>
-            <div class="card d-flex flex-column shadow mt-5 p-3 mb-2 col-3 ">
-              <h6 class="text-center text-danger"><i class="fa-solid fa-circle-exclamation"></i></br>
-              </br>
-                <%=errorMsg%></h6>
+            <div class="card d-flex flex-column shadow mt-5 p-3 mb-2  col-8 col-md-4 col-lg-3">
+              <i class="fa-solid fa-circle-exclamation text-danger text-center"></i>
+              <p class="text-center text-bold text-danger mb-0">
+                <%=errorMsg%></p>
             </div>
           <%}%>
           </div>
-          <div class=" row justify-content-center mt-5">
-        <div class="col d-flex flex-column justify-content-start col-10 col-lg-3 m-1">
+          <div class=" row justify-content-center col-12 mt-5">
+        <div class="col d-flex flex-column justify-content-start col-10 col-md-5 col-lg-3 m-1">
           <h2 class="text-center text-danger title"> Sign in :</h2>
           <form action="/users/sign-in" method="POST">
             <div class="form-group m-3">
@@ -53,7 +53,7 @@
           </form>
         </div>
   
-        <div class="col d-flex flex-column justify-content-start col-10 col-lg-3 m-1">
+        <div class="col d-flex flex-column justify-content-start col-10 col-md-5 col-lg-3 m-1">
           <h2 class="text-center text-danger title"> Sign up :</h2>
           <form action="/users/sign-up" method="POST">
             <div class="form-group m-3">

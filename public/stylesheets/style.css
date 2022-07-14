@@ -1,8 +1,33 @@
-body {
-  /* min-height: 100vh; */
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /* background: linear-gradient(#C0DBE7, #2D80B3); */
+html {
+  font-size: calc(0.30em + 1vw);
+  font:"Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+body {
+  font-size: calc(0.30em + 1vw);
+  font:"Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+p{
+  font-size: calc(0.30em + 1vw);
+}
+
+h6{
+  font-size: calc(0.60em + 1vw);
+  font-weight: bold;
+}
+
+h4{
+  font-size: calc(0.70em + 1vw);
+  font-weight: bold;
+}
+
+h2{
+  font-size: calc(0.90em + 1vw);
+  font-weight: bold;
+}
+
+
 
 .carousel {
   z-index: -99;
