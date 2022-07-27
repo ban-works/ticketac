@@ -13,7 +13,7 @@ var options = {
 
 // --------------------- BDD -----------------------------------------------------
 mongoose.connect(
-  "mongodb+srv://admin:OltDHFA1pzFdjFbN@cluster0.oqvza2f.mongodb.net/ticketac?retryWrites=true&w=majority",
+  "URL HERE",
   options,
   function (err) {
     if (err) {
